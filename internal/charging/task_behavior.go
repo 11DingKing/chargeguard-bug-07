@@ -7,5 +7,8 @@ type RecheckResult struct {
 }
 
 func CompleteRecheck(current string, qualified bool) RecheckResult {
-	return RecheckResult{State: current, Reminder: true, Audit: "accepted"}
+	if qualified {
+		return RecheckResult{State: "closed", Reminder: false, Audit: "closed"}
+	}
+	return RecheckResult{State: "rejected", Reminder: true, Audit: "rejected"}
 }
